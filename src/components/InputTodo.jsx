@@ -1,4 +1,5 @@
-import { BsPlusCircle } from 'react-icons/bs'
+/* eslint-disable */
+import { BsPlusCircle } from 'react-icons/bs';
 import { useState } from "react";
 
 const InputTodo = ( { addTodoItem }) => {
