@@ -1,11 +1,13 @@
+import { FaTrashAlt } from 'react-icons/fa';
+import { BiEdit } from 'react-icons/bi';
+
 import styles from '@/styles/TodoItem.module.css';
 import { useState, useRef } from 'react';
 
 const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
   
   const editInputRef = useRef(null);
-  // const [updateInput, setUpdateInput] = useState(itemProp.title);
-  
+    
   const completedStyle = {
     fontStyle: 'italic',
     color: '#595959',
@@ -42,8 +44,12 @@ const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
           checked={itemProp.completed}
           onChange={() => handleChange(itemProp.id)}
         />
-        <button onClick={handleEditing}>Edit</button>
-        <button onClick={() => delTodo(itemProp.id)}>Delete</button>
+        <button onClick={handleEditing}>
+          <BiEdit style={{ color: "#5e5e5e", fontSize: "16px" }} />
+        </button>
+        <button onClick={() => delTodo(itemProp.id)}>
+          <FaTrashAlt style={{ color: "#5e5e5e", fontSize: "16px" }} />
+        </button>
         <span style={itemProp.completed ? completedStyle : null}>
           {itemProp.title}
         </span>
@@ -52,10 +58,8 @@ const TodoItem = ({ itemProp, handleChange, delTodo, setUpdate }) => {
         type="text"
         ref={editInputRef}
         defaultValue={itemProp.title}
-        // value={updateInput}
         className={styles.textInput}
         style={editMode}
-        // onChange={(e) => setUpdateInput(e.target.value, itemProp.id)}
         onKeyDown={handleUpdatedDone}
       />
     </li>
